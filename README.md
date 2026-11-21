@@ -21,8 +21,7 @@ To analyze quarterly product sales data across multiple products and quarters us
 import pandas as pd  
 
 # Customer Data Exploration using Pandas  
- 
-# Step 1: Create a sample customer dataset  
+
 data = {  
     "Customer_ID": [101, 102, 103, 104, 105, 106, 107, 108],  
     "Customer_Name": [  
@@ -51,12 +50,11 @@ data = {
     "Loyalty_Years": [3, 6, 2, 8, 5, 9, 4, 5],  
 }  
 
-# Step 2: Convert to a Pandas DataFrame  
 df = pd.DataFrame(data)  
 print("--- Full Customer Dataset ---")  
 print(df)  
 
-# Step 3: Basic exploration  
+ 
 print("\n--- Shape ---")  
 print(df.shape)  
 
@@ -69,40 +67,38 @@ df.info()
 print("\n--- Descriptive Statistics ---")  
 print(df.describe())  
 
-# Step 4: Display first and last few records  
+  
 print("\n--- First 3 Records ---")  
 print(df.head(3))  
 
 print("\n--- Last 3 Records ---")  
 print(df.tail(3))  
   
-# Step 5: Sort customers by Annual Income (descending)  
+
 sorted_by_income = df.sort_values(by="Annual_Income", ascending=False)  
 print("\n--- Customers Sorted by Annual Income (Descending) ---")  
 print(sorted_by_income)  
 
-# Step 6: Filter high-income customers (Income > 70000)  
+ 
 high_income_customers = df[df["Annual_Income"] > 70000]          
 print("\n--- High-Income Customers (Annual_Income > 70000) ---")    
 print(high_income_customers)  
 
-# Step 7: Group customers by Region and find average Income and Spending Score          
+          
 regional_averages = df.groupby("Region")[["Annual_Income", "Spending_Score"]].mean()    
 print("\n--- Regional Average Income and Spending Score ---")  
 print(regional_averages)  
 
-# Step 8: Count number of customers in each Region  
+ 
 region_counts = df["Region"].value_counts()    
 print("\n--- Customer Count per Region ---")    
 print(region_counts)    
 
-# Step 9: Identify customer with maximum Spending Score  
 top_spender_idx = df["Spending_Score"].idxmax()  
 top_spender = df.loc[top_spender_idx]  
 print("\n--- Customer with Maximum Spending Score ---")  
 print(top_spender)  
-
-# Step 10: Compute overall averages  
+ 
 overall_avg_income = df["Annual_Income"].mean()    
 overall_avg_spending = df["Spending_Score"].mean()  
 print("\n--- Overall Averages ---")  
